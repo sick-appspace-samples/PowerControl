@@ -29,6 +29,8 @@ gToggleTimer = Timer.create()
 Timer.setExpirationTime(gToggleTimer, 5000)
 Timer.setPeriodic(gToggleTimer, true)
 
+local DELAY = 2000 -- ms between each type for demonstration purpose
+
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
@@ -60,7 +62,7 @@ Timer.register(gToggleTimer, 'OnExpired', togglePower)
 --@handleOnSwitched(powerstate:bool)
 local function handleOnSwitched(powerstate)
   print('Current state is: ' .. tostring(powerstate))
-  Script.sleep(2000) -- Waiting to let the values settle, usage for demonstration only
+  Script.sleep(DELAY) -- Waiting to let the values settle, usage for demonstration only
   local power,
     voltage,
     current = Connector.Power.getValues(gPowerHandle)
