@@ -35,7 +35,6 @@ local DELAY = 2000 -- ms between each type for demonstration purpose
 
 --Start of Function and Event Scope---------------------------------------------
 
---@handleOnStarted()
 local function handleOnStarted()
   --Enabling power once after start and
   --then starting timer to call the toggle on every expiration
@@ -46,7 +45,6 @@ end
 --Registration of the 'main' function to the 'Engine.OnStarted' event
 Script.register('Engine.OnStarted', handleOnStarted)
 
---@togglePower()
 local function togglePower()
   --Toggle power depending on previous state
   if Connector.Power.isEnabled(gPowerHandle) then
@@ -59,7 +57,7 @@ end
 --Registration of the 'togglePower' function to the 'OnExpired' event of the gToggleTimer
 Timer.register(gToggleTimer, 'OnExpired', togglePower)
 
---@handleOnSwitched(powerstate:bool)
+---@param powerstate bool
 local function handleOnSwitched(powerstate)
   print('Current state is: ' .. tostring(powerstate))
   Script.sleep(DELAY) -- Waiting to let the values settle, usage for demonstration only
